@@ -5,6 +5,9 @@
   "tasks": [{
     "label": "syncAll",
     "type": "shell",
-    "command": "git add .;git commit -m 'Automatic Commit';git pull origin master;git push origin master;"
+    "command": "git add .;git commit -m 'Automatic Commit';git pull origin master;git push origin master;",
+    "presentation": {
+      "reveal": "never"
+    }
   }]
 }
