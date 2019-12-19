@@ -1,7 +1,7 @@
 new Vue({
 	el: '#app',
 	data: {
-		title: 'Tasks!!'
+		title: 'Tasks and Terminal Open!!'
 	},
 	methods: {
 		changeTitle: function(event) {
