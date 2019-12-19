@@ -1,7 +1,7 @@
 new Vue({
 	el: '#app',
 	data: {
-		title: 'Tasks and Terminal Open!!'
+		title: 'Tasks are now running in background!!'
 	},
 	methods: {
 		changeTitle: function(event) {
