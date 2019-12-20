@@ -1,7 +1,7 @@
 new Vue({
 	el: '#app',
 	data: {
-		title: 'Tasks are now running in background!!'
+		title: 'Start Typing!!'
 	},
 	methods: {
 		changeTitle: function(event) {
