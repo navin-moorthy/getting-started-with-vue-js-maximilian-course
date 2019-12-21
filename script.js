@@ -11,7 +11,22 @@ new Vue({
 		counter: 0,
 		x: 0,
 		y: 0,
-		value: 0
+		value: 0,
+		effect: 'highlight',
+		highlight: {},
+		color: '',
+		activeColor: '',
+		active: 'false',
+		styleObject: {
+			width: '100px',
+			height: '100px',
+			backgroundColor: 'purple'
+		},
+		progressBar: {
+			width: '0px',
+			backgroundColor: 'magenta'
+		},
+		isVisible: true
 	},
 	watch: {
 		result: function(value) {
@@ -43,6 +58,18 @@ new Vue({
 		},
 		alertMe: function() {
 			alert('Exact Keys pressed!');
+		},
+		startEffect: function() {
+			setInterval(() => {
+				this.effect = this.effect == 'highlight' ? 'shrink' : 'highlight';
+			}, 1000);
+		},
+		startProgress: function() {
+			let width = 0;
+			setInterval(() => {
+				width += 20;
+				this.progressBar.width = width + 'px';
+			}, 500);
 		}
 	}
 });
