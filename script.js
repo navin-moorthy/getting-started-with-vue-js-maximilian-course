@@ -11,7 +11,20 @@ new Vue({
 		counter: 0,
 		x: 0,
 		y: 0,
-		value: ''
+		value: 0
+	},
+	watch: {
+		result: function(value) {
+			const vm = this;
+			setTimeout(function() {
+				vm.value = 0;
+			}, 5000);
+		}
+	},
+	computed: {
+		result: function() {
+			return this.value !== 37 ? 'Not there yet' : 'Done';
+		}
 	},
 	methods: {
 		changeTitle: function(event) {
@@ -30,9 +43,6 @@ new Vue({
 		},
 		alertMe: function() {
 			alert('Exact Keys pressed!');
-		},
-		displayTheInput: function(event) {
-			this.value = event.target.value;
 		}
 	}
 });
