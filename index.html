@@ -8,12 +8,18 @@
 	</head>
 	<body>
 		<div id="app">
+			<!-- Events -->
 			<input type="text" v-on:input="changeTitle" />
 			<!-- String Interpolation -->
-			<!-- v-once - Control the re-rendering of the value -->
-			<p v-once>{{ title }}</p>
+			<p>{{ title }}</p>
 			<!-- Directives -->
 			<a v-bind:href="link" target="_blank" rel="noopener noreferrer">Google</a>
+			<!-- v-once - Control the re-rendering of the value -->
+			<p v-once>{{ title }}</p>
+			<!-- Vue by default does not allow HTML content but only as a string -->
+			<p>{{ friendlyLink }}</p>
+			<!-- But we can conditionally show like the example below -->
+			<p v-html="friendlyLink"></p>
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
