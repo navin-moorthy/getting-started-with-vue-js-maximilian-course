@@ -10,7 +10,8 @@ new Vue({
 			'https://images.unsplash.com/photo-1576792254006-4f8b51ed204b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80',
 		counter: 0,
 		x: 0,
-		y: 0
+		y: 0,
+		value: ''
 	},
 	methods: {
 		changeTitle: function(event) {
@@ -29,6 +30,9 @@ new Vue({
 		},
 		alertMe: function() {
 			alert('Exact Keys pressed!');
+		},
+		displayTheInput: function(event) {
+			this.value = event.target.value;
 		}
 	}
 });
