@@ -8,6 +8,14 @@
 	</head>
 	<body>
 		<div id="app">
+			<!-- Events -->
+			<div class="event-and-its-modifiers">
+				<button @click="increase(2, $event)">Increase the counter</button>
+				<h4>{{ counter }}</h4>
+				<h4 @mousemove="updateCoordinate">Co-ordinates - {{ x }}/{{ y }} - <span @mousemove.stop>DEAD SPOT</span></h4>
+				<input type="text" @keyup.enter.exact="alertMe" />
+			</div>
+			<!-- Excercises -->
 			<div id="exercises">
 				<h1>Assignment 1</h1>
 				<!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
