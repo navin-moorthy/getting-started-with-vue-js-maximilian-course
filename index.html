@@ -9,6 +9,36 @@
 	</head>
 	<body>
 		<div id="app">
+			<!-- Excercises 5-->
+			<div id="exercise">
+				<!-- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference -->
+				<div>
+					<button @click="toggle=!toggle">Toggle</button>
+					<p v-if="toggle">You either see me ...</p>
+					<p v-else>...or me</p>
+					<p v-show="toggle">You either see me ...</p>
+					<p v-show="!toggle">...or me</p>
+				</div>
+				<!-- 2) Output an <ul> of array elements of your choice. Also print the index of each element. -->
+				<ul>
+					<li v-for="(arr, index) in array" :key="index">{{ arr }}</li>
+				</ul>
+				<!-- 3) Print all key-value pairs of the following object: {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'}. Also print the index of each item. -->
+				<ul>
+					<li v-for="(value, key, index) in myObject" :key="index">{{ key }}:{{ value }}({{ index }})</li>
+				</ul>
+				<!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
+				<ul>
+					<li v-for="(data, key, index) in testData" :key="index">
+						<template v-if="key === 'data'">
+							<div v-for="(num, index) in data" :key="index">{{ num }}</div>
+						</template>
+						<div v-else>
+							{{ data }}
+						</div>
+					</li>
+				</ul>
+			</div>
 			<!-- Excercises 4-->
 			<div id="exercise4">
 				<!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
