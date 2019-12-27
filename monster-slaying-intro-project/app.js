@@ -3,41 +3,92 @@ new Vue({
 	data: {
 		playerHealth: 100,
 		monsterHealth: 100,
-		isGameRunning: false
+		isGameRunning: false,
+		turns: []
 	},
 	methods: {
 		startGame: function() {
 			this.isGameRunning = true;
 			this.playerHealth = 100;
 			this.monsterHealth = 100;
+			this.turns = [];
 		},
 		attack: function() {
-			let max = 10;
-			let min = 3;
-
-			let damage = Math.floor(Math.random() * (max - min + 1) + min);
+			let damage = this.calculateDamage(3, 10);
 			this.monsterHealth -= damage;
+			this.turns.unshift({
+				isPlayer: true,
+				text: 'Player attacks Monster for ' + damage
+			});
 
-			if (this.monsterHealth <= 0) {
-				alert('You Won');
-				this.isGameRunning = false;
+			if (this.checkWin()) {
 				return;
 			}
 
-			max = 12;
-			min = 5;
+			this.monsterDamage();
+			console.log('turns:', this.turns);
+		},
+		specialAttack: function() {
+			let damage = this.calculateDamage(10, 20);
+			this.monsterHealth -= damage;
+			this.turns.unshift({
+				isPlayer: true,
+				text: 'Player attacks Monster for ' + damage
+			});
 
-			damage = Math.floor(Math.random() * (max - min + 1) + min);
+			if (this.checkWin()) {
+				return;
+			}
+
+			this.monsterDamage();
+		},
+		heal: function() {
+			if (this.playerHealth <= 90) {
+				this.playerHealth += 10;
+			} else {
+				this.playerHealth = 100;
+			}
+			this.turns.unshift({
+				isPlayer: true,
+				text: 'Player heals for  10'
+			});
+
+			this.monsterDamage();
+		},
+		giveUp: function() {
+			this.isGameRunning = false;
+		},
+		monsterDamage: function() {
+			let damage = this.calculateDamage(5, 12);
 			this.playerHealth -= damage;
+			this.turns.unshift({
+				isPlayer: false,
+				text: 'Monster attacks Player for ' + damage
+			});
+			this.checkWin();
+		},
+		calculateDamage: function(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		},
+		checkWin: function() {
+			if (this.monsterHealth <= 0) {
+				if (confirm('You Won! New Game?')) {
+					this.startGame();
+				} else {
+					this.isGameRunning = false;
+				}
+				return true;
+			}
 
 			if (this.playerHealth <= 0) {
-				alert('You Lost');
-				this.isGameRunning = false;
-				return;
+				if (confirm('You Lost! New Game?')) {
+					this.startGame();
+				} else {
+					this.isGameRunning = false;
+				}
+				return true;
 			}
-		},
-		specialAttack: function() {},
-		heal: function() {},
-		giveUp: function() {}
+			return false;
+		}
 	}
 });
