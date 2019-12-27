@@ -5,7 +5,7 @@
   "tasks": [{
     "label": "syncAll",
     "type": "shell",
-    "command": "git add .;git commit -m 'Section 4: First Course Project - The Monster Slayer';git pull origin master;git push origin master;",
+    "command": "git add .;git commit -m 'Section 5: Understanding the VueJS Instance';git pull origin master;git push origin master;",
     "isBackground": true,
     "presentation": {
       "reveal": "never"
